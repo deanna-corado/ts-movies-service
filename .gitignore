@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build output (TypeScript)
+dist/
+*.tsbuildinfo
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sequelize CLI folders (optional if generated locally)
+migrations/*.js
+seeders/*.js
+models/*.js
+config/config.json # if you have secrets, better use config.js with env vars
+
+# IDE/editor
+.vscode/
+.idea/
