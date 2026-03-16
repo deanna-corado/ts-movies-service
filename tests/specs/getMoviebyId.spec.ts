@@ -18,13 +18,20 @@ describe('Movies API', () => {
 
     movieId = res.body.data.id;
   });
+
+  //success
   it('GET /api/v1/movies/:id should return 200', async () => {
     const res = await request(app).get(`/api/v1/movies/${movieId}`);
 
     expect(res.status).toBe(200);
   });
-});
 
+  //404 not found
+  it(`GET /api/v1/movies/:id should return 404 if movie not found`, async () => {
+    const res = await request(app).get(`/api/v1/movies/9999`);
+    expect(res.status).toBe(404);
+  });
+});
 afterAll(async () => {
   await sequelize.close();
 });

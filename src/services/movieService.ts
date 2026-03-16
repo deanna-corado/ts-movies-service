@@ -26,7 +26,7 @@ export const updateMovie = async (id: number, data: { title?: string; director?:
     throw new MovieNotFoundError();
   }
 
-  return movieRepo.updateMovie(id, data);
+  return movie;
 };
 
 export const deleteMovie = async (id: number) => {
@@ -36,5 +36,5 @@ export const deleteMovie = async (id: number) => {
     throw new MovieNotFoundError();
   }
 
-  return movieRepo.deleteMovie(id);
+  return movie;
 };

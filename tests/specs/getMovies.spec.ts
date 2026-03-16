@@ -7,6 +7,7 @@ import app from '../../src/app';
 import sequelize from '../../src/config/db';
 
 describe('Movies API', () => {
+  //success - wala na yung unauth sa service na yun
   it('GET /api/v1/movies should return 200', async () => {
     const res = await request(app).get('/api/v1/movies');
 
