@@ -1,18 +1,29 @@
-import { authMock } from '../mocks/mock';
+import { authMock, mockGetAllMovies } from '../mocks/mock';
 
 authMock();
 
 import request from 'supertest';
 import app from '../../src/app';
 import sequelize from '../../src/config/db';
+import { movieData } from '../fixtures/movieData';
 
-describe('Movies API', () => {
-  //success - wala na yung unauth sa service na yun
+describe('Get Movies', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  //success
   it('GET /api/v1/movies should return 200', async () => {
+    const mockMovies = [
+      { id: 1, ...movieData },
+      { id: 2, ...movieData },
+    ];
+    mockGetAllMovies.mockResolvedValue(mockMovies);
+
     const res = await request(app).get('/api/v1/movies');
 
     expect(res.status).toBe(200);
-    // expect(Array.isArray(res.body)).toBe(true); next time na?
+    expect(res.body.status).toBe('success');
   });
 });
 
